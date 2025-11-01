@@ -21,11 +21,9 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+    "src/assets",
+    "src/favicon.ico"
+  ],
             "styles": [
               "src/styles.css"
             ],
@@ -78,12 +76,10 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+             "assets": [
+    "src/assets",
+    "src/favicon.ico"
+  ],
             "styles": [
               "src/styles.css"
             ],

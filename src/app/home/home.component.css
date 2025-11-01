@@ -1,0 +1,304 @@
+/* Enhanced Home Component Styles */
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--background-color) 100%);
+  border: 2px solid var(--border-color);
+  margin: 30px;
+  padding: 50px 30px;
+  border-radius: 20px;
+  animation: fadeInUp 0.8s ease-out;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.main::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+.content {
+  margin-left: 5%;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.content h2 {
+  font-size: 42px;
+  color: var(--third-color);
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: slideInLeft 0.6s ease-out 0.2s both;
+}
+
+.content p {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  animation: slideInLeft 0.6s ease-out 0.4s both;
+}
+
+.content p,
+.content li {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+  animation: slideInLeft 0.6s ease-out 0.6s both;
+}
+
+.content li {
+  padding: 12px 0 12px 35px;
+  position: relative;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.content li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--third-color) 0%, var(--accent-color) 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.content li:hover {
+  /* transform: translateX(5px); */
+  color: var(--third-color);
+}
+
+.content button {
+  margin: 15px 0;
+  padding: 16px 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--third-color) 0%, var(--accent-color) 100%);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 1;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  animation: slideInLeft 0.6s ease-out 0.8s both;
+  overflow: hidden;
+}
+
+.content button::before {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  opacity: 0;
+  content: '';
+  background: var(--background-color);
+  z-index: -1;
+  border-radius: 12px;
+}
+
+.content button::after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.content button:hover::before,
+.content button:focus::before {
+  width: 100%;
+  opacity: 1;
+}
+
+.content button:hover,
+.content button:focus {
+  color: var(--third-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  /* padding-right: 50px; */
+}
+
+.content button:hover::after,
+.content button:focus::after {
+  opacity: 1;
+  /* right: 15px; */
+}
+
+.content button:active {
+  transform: scale(0.95) translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gun {
+  flex-shrink: 0;
+  max-width: 500px;
+  animation: slideInRight 0.8s ease-out 0.3s both;
+  position: relative;
+  z-index: 1;
+}
+
+.gun img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+  transition: all 0.5s ease;
+  animation: float 6s ease-in-out infinite;
+}
+
+.gun img:hover {
+  transform: scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.3));
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    margin: 20px;
+  }
+
+  .content {
+    margin-left: 0;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .content h2 {
+    font-size: 32px;
+  }
+
+  .content p,
+  .content li {
+    font-size: 16px;
+  }
+
+  .content ul {
+    text-align: left;
+    display: inline-block;
+  }
+
+  .content button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .gun {
+    margin-top: 30px;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding: 30px 15px;
+    margin: 15px;
+    border-radius: 15px;
+  }
+
+  .content h2 {
+    font-size: 28px;
+  }
+
+  .content p,
+  .content li {
+    font-size: 15px;
+  }
+
+  .content button {
+    padding: 14px 30px;
+    font-size: 15px;
+  }
+
+  .gun {
+    max-width: 280px;
+  }
+}

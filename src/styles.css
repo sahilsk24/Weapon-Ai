@@ -1,1 +1,170 @@
-/* You can add global styles to this file, and also import other style files */
+/* Enhanced Global Styles with Modern Design */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+ --background-color: #050B1F;
+  --primary-color: #0F172A;
+  --secondary-color: #1E293B;
+  --third-color: #6366F1;
+  --accent-color: #818CF8;
+  --text-color: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --border-color: #334155;
+  --shadow-sm: 0 2px 8px rgba(99, 102, 241, 0.15);
+  --shadow-md: 0 4px 16px rgba(99, 102, 241, 0.2);
+  --shadow-lg: 0 8px 24px rgba(99, 102, 241, 0.25);
+}
+
+/* Ocean Breeze */
+[data-theme="ocean"] {
+  --background-color: #0A1628;
+  --primary-color: #1A2947;
+  --secondary-color: #2C3E5D;
+  --third-color: #3B82F6;
+  --accent-color: #06B6D4;
+  --text-color: #F0F9FF;
+  --text-secondary: #BAE6FD;
+  --border-color: #1E3A5F;
+  --shadow-sm: 0 2px 8px rgba(59, 130, 246, 0.15);
+  --shadow-md: 0 4px 16px rgba(59, 130, 246, 0.2);
+  --shadow-lg: 0 8px 24px rgba(59, 130, 246, 0.25);
+}
+
+/* Sunset Glow */
+[data-theme="sunset"] {
+  --background-color: #1A0B0E;
+  --primary-color: #2D1319;
+  --secondary-color: #4A1E2A;
+  --third-color: #F43F5E;
+  --accent-color: #FB923C;
+  --text-color: #FEF2F2;
+  --text-secondary: #FECACA;
+  --border-color: #5C2636;
+  --shadow-sm: 0 2px 8px rgba(244, 63, 94, 0.15);
+  --shadow-md: 0 4px 16px rgba(244, 63, 94, 0.2);
+  --shadow-lg: 0 8px 24px rgba(244, 63, 94, 0.25);
+}
+
+/* Forest Night */
+[data-theme="forest"] {
+  --background-color: #0A1F0F;
+  --primary-color: #14331D;
+  --secondary-color: #1F4A2E;
+  --third-color: #22C55E;
+  --accent-color: #4ADE80;
+  --text-color: #F0FDF4;
+  --text-secondary: #BBF7D0;
+  --border-color: #2D4A38;
+  --shadow-sm: 0 2px 8px rgba(34, 197, 94, 0.15);
+  --shadow-md: 0 4px 16px rgba(34, 197, 94, 0.2);
+  --shadow-lg: 0 8px 24px rgba(34, 197, 94, 0.25);
+}
+
+
+/* Cyber Pink */
+[data-theme="cyber"] {
+  --background-color: #0D0221;
+  --primary-color: #1A0933;
+  --secondary-color: #2B1145;
+  --third-color: #EC4899;
+  --accent-color: #F472B6;
+  --text-color: #FDF4FF;
+  --text-secondary: #F5D0FE;
+  --border-color: #4C1D6A;
+  --shadow-sm: 0 2px 8px rgba(236, 72, 153, 0.15);
+  --shadow-md: 0 4px 16px rgba(236, 72, 153, 0.2);
+  --shadow-lg: 0 8px 24px rgba(236, 72, 153, 0.25);
+}
+
+/* Golden Hour */
+[data-theme="golden"] {
+  --background-color: #1C1108;
+  --primary-color: #2D1B0E;
+  --secondary-color: #4A2F1A;
+  --third-color: #F59E0B;
+  --accent-color: #FCD34D;
+  --text-color: #FFFBEB;
+  --text-secondary: #FEF3C7;
+  --border-color: #5C3D28;
+  --shadow-sm: 0 2px 8px rgba(245, 158, 11, 0.15);
+  --shadow-md: 0 4px 16px rgba(245, 158, 11, 0.2);
+  --shadow-lg: 0 8px 24px rgba(245, 158, 11, 0.25);
+}
+
+/* Arctic Teal */
+[data-theme="arctic"] {
+  --background-color: #041C1C;
+  --primary-color: #0A2F2F;
+  --secondary-color: #134545;
+  --third-color: #14B8A6;
+  --accent-color: #2DD4BF;
+  --text-color: #F0FDFA;
+  --text-secondary: #CCFBF1;
+  --border-color: #1F5555;
+  --shadow-sm: 0 2px 8px rgba(20, 184, 166, 0.15);
+  --shadow-md: 0 4px 16px rgba(20, 184, 166, 0.2);
+  --shadow-lg: 0 8px 24px rgba(20, 184, 166, 0.25);
+}
+
+/* Lavender Dream */
+[data-theme="lavender"] {
+--background-color: #0F0A1E;
+  --primary-color: #1E1535;
+  --secondary-color: #2D1B4E;
+  --third-color: #7C3AED;
+  --accent-color: #A855F7;
+  --text-color: #F3F4F6;
+  --text-secondary: #D1D5DB;
+  --border-color: #3D2A5C;
+  --shadow-sm: 0 2px 8px rgba(139, 92, 246, 0.15);
+  --shadow-md: 0 4px 16px rgba(139, 92, 246, 0.2);
+  --shadow-lg: 0 8px 24px rgba(139, 92, 246, 0.25);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--third-color);
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--third-color);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--third-color);
+  color: white;
+}
