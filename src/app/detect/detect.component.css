@@ -1,11 +1,10 @@
-/* Enhanced Detection Component Styles */
-
 section {
   padding: 60px 20px;
-  background: linear-gradient(180deg, var(--background-color) 0%, var(--primary-color) 100%);
+  background: linear-gradient(180deg, var(--background-color) 0%, var(--secondary-color) 100%);
   min-height: 100vh;
 }
 
+/* Main Title */
 h3 {
   color: var(--third-color);
   font-size: 48px;
@@ -18,10 +17,10 @@ h3 {
   animation: fadeInDown 0.6s ease-out;
 }
 
-/* Container */
+/* Main Container */
 .container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
   max-width: 1300px;
   margin: 0 auto;
@@ -29,12 +28,11 @@ h3 {
   animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-/* Enhanced Glass-effect cards */
+/* Card Sections */
 .live, .image {
   background: var(--primary-color);
   backdrop-filter: blur(20px);
   width: 100%;
-  max-width: 550px;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -48,7 +46,7 @@ h3 {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Gradient accent bar */
+/* Gradient accent bar on top */
 .live::before, .image::before {
   content: '';
   position: absolute;
@@ -76,6 +74,7 @@ h3 {
   pointer-events: none;
 }
 
+/* Card hover effects */
 .live:hover::before, .image:hover::before {
   transform: scaleX(1);
 }
@@ -90,8 +89,8 @@ h3 {
   border-color: var(--third-color);
 }
 
-/* Card headers with icons */
-.container h4 {
+/* Card Headers */
+h4 {
   font-size: 1.5rem;
   margin: 0 0 30px 0;
   color: var(--third-color);
@@ -103,12 +102,12 @@ h3 {
   justify-content: center;
 }
 
-.container h4 i {
+h4 i {
   font-size: 1.8rem;
   animation: pulse 2s ease-in-out infinite;
 }
 
-.container h5 {
+h5 {
   color: var(--text-color);
   font-size: 1.15rem;
   margin-bottom: 15px;
@@ -116,9 +115,21 @@ h3 {
   font-weight: 600;
 }
 
-/* Enhanced Upload button */
+/* Controls Container */
+.controls, .upload-controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Upload Label Button */
 .upload-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 16px 32px;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--third-color) 0%, var(--accent-color) 100%);
@@ -127,7 +138,6 @@ h3 {
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 10px 0;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
@@ -158,7 +168,7 @@ h3 {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Enhanced Buttons */
+/* Buttons */
 button {
   padding: 16px 36px;
   border-radius: 14px;
@@ -169,10 +179,12 @@ button {
   font-size: 15px;
   transition: all 0.3s ease;
   cursor: pointer;
-  margin: 15px 5px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 button::before {
@@ -209,27 +221,115 @@ button:disabled {
   background: linear-gradient(135deg, var(--text-secondary) 0%, var(--border-color) 100%);
 }
 
-/* Live Camera Section */
-.live {
-  text-align: center;
+/* Button Variants - Removed, all buttons use root colors */
+
+/* Status Indicator */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--secondary-color);
+  border-radius: 8px;
+  color: var(--third-color);
+  font-weight: 500;
+  width: 100%;
+  justify-content: center;
 }
 
-.controls {
-  margin: 20px 0;
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  animation: pulseIndicator 2s infinite;
+}
+
+/* Error Message */
+.error-message {
+  background: var(--secondary-color);
+  color: var(--third-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
   display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: 2px solid var(--accent-color);
+}
+
+/* Camera Container */
+.camera-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
   width: 100%;
 }
 
+.camera-container.hidden {
+  display: none;
+}
+
+.video-wrapper, .detection-wrapper {
+  background: var(--secondary-color);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  border: 2px solid var(--border-color);
+}
+
+.video-wrapper h5, .detection-wrapper h5 {
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Camera Placeholder */
+.camera-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  margin-top: 1.5rem;
+  background: var(--secondary-color);
+  border-radius: 12px;
+  border: 2px dashed var(--border-color);
+  color: var(--text-secondary);
+}
+
+.camera-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: var(--third-color);
+  opacity: 0.5;
+}
+
+.camera-placeholder p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Video and Detected Image */
 #cam, #detected {
+  width: 100%;
   max-width: 100%;
-  border-radius: 16px;
+  height: auto;
+  border-radius: 8px;
+  background: #000;
+  min-height: 240px;
+  object-fit: contain;
   box-shadow: var(--shadow-md);
-  margin: 10px 0;
-  border: 3px solid var(--border-color);
   transition: all 0.3s ease;
+}
+
+#detected {
+  background: var(--secondary-color);
 }
 
 #cam:hover, #detected:hover {
@@ -237,69 +337,12 @@ button:disabled {
   transform: scale(1.02);
 }
 
-.camera-feed {
-  margin-top: 20px;
-  width: 100%;
-}
-
-.camera-feed img {
-  border: 3px solid var(--secondary-color);
-  border-radius: 16px;
-  max-width: 100%;
-  box-shadow: var(--shadow-md);
-  animation: fadeIn 0.5s ease;
-}
-
-.camera-feed p {
-  margin-top: 15px;
-  color: var(--text-color);
-  font-weight: 600;
-  font-size: 16px;
-}
-
-/* Detected Images Gallery */
-.detected-images {
-  margin-top: 30px;
-  width: 100%;
-}
-
-.detected-images h5 {
-  color: var(--third-color);
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.images {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
-  justify-content: center;
-}
-
-.images img {
-  width: 100%;
-  height: auto;
-  border: 3px solid var(--third-color);
-  border-radius: 12px;
-  padding: 5px;
-  background: white;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.images img:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent-color);
-}
-
-/* Image Upload Preview */
+/* Preview & Result Images */
 .preview, .result {
   margin-top: 25px;
   width: 100%;
   animation: fadeIn 0.5s ease;
+  text-align: center;
 }
 
 .preview h5, .result h5 {
@@ -325,8 +368,8 @@ button:disabled {
   box-shadow: var(--shadow-lg);
 }
 
-/* Loading State */
-.loading-spinner {
+/* Loading Indicator */
+.loading-indicator {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -335,7 +378,7 @@ button:disabled {
 }
 
 .spinner {
-  border: 5px solid var(--primary-color);
+  border: 5px solid var(--secondary-color);
   border-top: 5px solid var(--third-color);
   border-radius: 50%;
   width: 60px;
@@ -344,7 +387,7 @@ button:disabled {
   margin-bottom: 20px;
 }
 
-.loading-spinner p {
+.loading-indicator p {
   font-weight: 600;
   font-size: 16px;
   color: var(--text-color);
@@ -399,21 +442,30 @@ button:disabled {
   }
 }
 
+@keyframes pulseIndicator {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1100px) {
   .container {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
     gap: 30px;
-  }
-
-  .live, .image {
-    max-width: 650px;
-    margin: 0;
   }
 
   h3 {
     font-size: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .camera-container {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -431,7 +483,7 @@ button:disabled {
     padding: 30px 24px;
   }
 
-  .container h4 {
+  h4 {
     font-size: 1.3rem;
   }
 
@@ -439,10 +491,15 @@ button:disabled {
     padding: 14px 28px;
     font-size: 14px;
   }
-
-  .images {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 12px;
+  
+  .controls, .upload-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  button, .upload-label {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -451,7 +508,7 @@ button:disabled {
     font-size: 28px;
   }
 
-  .container h4 {
+  h4 {
     font-size: 1.2rem;
     flex-direction: column;
     gap: 8px;
@@ -460,17 +517,6 @@ button:disabled {
   button, .upload-label {
     padding: 12px 24px;
     font-size: 13px;
-    margin: 10px 3px;
-  }
-
-  .controls {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .images {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 10px;
   }
 
   .live, .image {

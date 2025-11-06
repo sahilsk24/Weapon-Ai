@@ -1,13 +1,10 @@
-<section>
+<!-- <section>
   <h3>Weapon Detection System</h3>
   <div class="container">
 <div class="live">
   <h4><i class="fa-regular fa-camera" style="color: #96a78d;"></i> Live Camera Detection</h4>
 
-  <!-- <div class="controls">
-    <button (click)="startCamera()" [disabled]="cameraActive">Start Camera</button>
-    <button (click)="stopCamera()" [disabled]="!cameraActive">Stop Camera</button>
-  </div> -->
+
   <div class="controls">
       <video id="cam" autoplay playsinline></video>
 <img id="detected" />
@@ -49,6 +46,104 @@
       </div>
 
       <div *ngIf="loading">
+        <p>Detecting weapons... please wait.</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section>
+  <h3>Weapon Detection System</h3>
+  <div class="container">
+    <!-- Live Camera Detection -->
+    <div class="live">
+      <h4>
+        <i class="fa-regular fa-camera" style="color: #96a78d;"></i> 
+        Live Camera Detection
+      </h4>
+
+      <div class="controls">
+        <button 
+          (click)="startLive()" 
+          [disabled]="liveDetectionActive"
+          class="btn-start">
+          <i class="fa-solid fa-play"></i> Start Live Detection
+        </button>
+        <button 
+          (click)="stopLive()" 
+          [disabled]="!liveDetectionActive"
+          class="btn-stop">
+          <i class="fa-solid fa-stop"></i> Stop
+        </button>
+      </div>
+
+      <div class="status" *ngIf="liveDetectionActive">
+        <span class="status-indicator"></span>
+        <span>Live detection active</span>
+      </div>
+
+      <div class="error-message" *ngIf="cameraError">
+        <i class="fa-solid fa-exclamation-triangle"></i>
+        {{ cameraError }}
+      </div>
+
+      <div class="camera-placeholder" *ngIf="!liveDetectionActive">
+        <i class="fa-solid fa-video"></i>
+        <p>Click "Start Live Detection" to begin</p>
+      </div>
+
+      <div class="camera-container" [class.hidden]="!liveDetectionActive">
+        <div class="video-wrapper">
+          <h5>Camera Feed</h5>
+          <video id="cam" autoplay playsinline></video>
+        </div>
+        
+        <div class="detection-wrapper">
+          <h5>Detected Objects</h5>
+          <img id="detected" alt="Detection results will appear here" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Upload Detection -->
+    <div class="image">
+      <h4>
+        <i class="fa-solid fa-upload" style="color: #96a78d;"></i> 
+        Image Upload Detection
+      </h4>
+
+      <div class="upload-controls">
+        <input 
+          type="file" 
+          id="fileUpload" 
+          hidden 
+          accept="image/*"
+          (change)="onFileSelected($event)">
+        <label for="fileUpload" class="upload-label">
+          <i class="fa-solid fa-image"></i> Choose Image
+        </label>
+
+        <button 
+          (click)="uploadImage()" 
+          [disabled]="!selectedFile || loading"
+          class="btn-upload">
+          <i class="fa-solid fa-upload"></i> 
+          {{ loading ? 'Detecting...' : 'Detect Weapons' }}
+        </button>
+      </div>
+
+      <div class="preview" *ngIf="previewUrl">
+        <h5>Original Image:</h5>
+        <img [src]="previewUrl" alt="preview">
+      </div>
+
+      <div class="result" *ngIf="resultUrl">
+        <h5>Detected Objects:</h5>
+        <img [src]="resultUrl" alt="result">
+      </div>
+
+      <div class="loading-indicator" *ngIf="loading">
+        <div class="spinner"></div>
         <p>Detecting weapons... please wait.</p>
       </div>
     </div>
