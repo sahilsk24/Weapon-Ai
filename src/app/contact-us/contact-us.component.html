@@ -5,9 +5,7 @@
 </div>
 
 <div class="container">
-  <div class="cont1">
-    <!-- <label for="name">Name</label> -->
-    <!-- <input type="text" placeholder="Enter your name"> -->
+  <!-- <div class="cont1">
     <label for="email">Email</label>
     <input type="email" placeholder="Enter your email">
     <label for="subject">Subject</label>
@@ -20,7 +18,30 @@
     <label for="message">Message</label>
     <textarea rows="3" placeholder="Enter your message"></textarea>
     <button type="submit">Send a message</button>
-  </div>
+  </div> -->
+
+<form (ngSubmit)="submitComplaint()" #f="ngForm" class="cont1">
+  <label for="email">Email</label>
+  <input id="email" type="email" name="email" [(ngModel)]="form.email" placeholder="Enter your email" required />
+
+  <label for="subject">Subject</label>
+  <select id="subject" name="subject" [(ngModel)]="form.subject" required>
+    <option value="improve">Improvements</option>
+    <option value="error">Bugs</option>
+    <option value="fault">Accuracy</option>
+    <option value="others">Others</option>
+  </select>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="3" [(ngModel)]="form.message" placeholder="Enter your message" required></textarea>
+
+  <button type="submit" [disabled]="f.invalid">Send a message</button>
+</form>
+
+
+
+
+
   <div class="cont2">
     <div class="box1">
        <h3>Email</h3>
